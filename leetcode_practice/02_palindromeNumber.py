@@ -7,9 +7,15 @@ class palindromeNumberTest(unittest.TestCase):
         result = isPalindrome(num)
         self.assertEqual(result,True)
 
+    def test_twoDifferentDigits(self):
+        num = 23
+        result = isPalindrome(num)
+        self.assertEqual(result, False)
+
 
 def isPalindrome(num):
-    return True
+    num_as_str = str(num)
+    return num_as_str == num_as_str[::-1]
 
 
 #execute our module as a script
