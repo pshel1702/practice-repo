@@ -9,6 +9,13 @@ class isBinaryTreeCousinTest(unittest.TestCase):
         result = are_cousins(root,x,y)
         self.assertFalse(result)
 
+    def test_siblings_false(self):
+        root = [1,2,3]
+        x = 2
+        y = 3
+        result = are_cousins(root,x,y)
+        self.assertFalse(result)
+
 def are_cousins(root,x,y):
     return False
 
