@@ -81,7 +81,7 @@ def get_nodes(root,node):
 
     for i in range(len(root)):
         if root[i] == node:
-            if i%2 != 0:
+            if is_right_child(i) == True: #create function for clarity about this line
                 left_child = root[i+2]
                 right_child = None
             else:
@@ -90,6 +90,11 @@ def get_nodes(root,node):
                 break
 
     return (node,left_child,right_child)
+
+def is_right_child(i):
+    if i%2 == 0:
+        return False
+    return True
 
 if __name__=="__main__":
     unittest.main()
