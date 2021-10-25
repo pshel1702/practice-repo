@@ -44,12 +44,6 @@ class isBinaryTreeCousinTest(unittest.TestCase):
         expected = (1,2,3)
         self.assertEqual(result,expected)
     
-    def test_get_root_depth(self):
-        root = [1,2]
-        x = 2
-        result = get_depth(root,1)
-        self.assertEqual(result,0)
-    
     def test_left_traverse_subtree_levels(self):
         root = [1,2,3,4]
         node = 2
@@ -71,9 +65,6 @@ def are_cousins(root,x,y):
 def get_parent(root,node):
     return 1
 
-def get_depth(root,node):
-    return 0 
-
 def get_nodes(root,node):
     #tree_root = root[0]
     if node == root[0]:
@@ -91,8 +82,10 @@ def get_nodes(root,node):
 
     return (node,left_child,right_child)
 
+
 def is_left_child(i):
     return i%2 == 0
+
 
 if __name__=="__main__":
     unittest.main()
