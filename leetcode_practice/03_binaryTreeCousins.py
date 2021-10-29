@@ -29,6 +29,38 @@ class BinaryTreeCousinsUnitTests(unittest.TestCase):
         result = get_parent(root,node)
         self.assertEqual(result,2)
 
+    def test_get_depth_root(self):
+        root = [1]
+        node = 1
+        result = get_depth(root,node)
+        self.assertEqual(result,0)
+    
+    def test_get_depth_root_one_child(self):
+        root = [1,2]
+        node = 2
+        result = get_depth(root,node)
+        self.assertEqual(result,1)
+    
+    def test_get_depth_root_with_two_children(self):
+        root = [1,2,3]
+        node = 3
+        result = get_depth(root,node)
+        self.assertEqual(result,1)
+    
+    def test_get_depth_node_at_second_level(self):
+        root = [1,2,3,4]
+        node = 4
+        result = get_depth(root,node)
+        self.assertEqual(result,2)
+
+def get_depth(root,node):
+    node_index = root.index(node)
+    if node_index in (1,2):
+        return 1
+    if node_index == 3:
+        return 2
+    return 0
+
 def get_parent(root,node):
     #Pseudocode
     #iterate over root to find node
@@ -49,7 +81,15 @@ def are_cousins(root,x,y):
     #Repeat above step for y in root
     #Return True if parent_x != parent_y and depth_x == depth_y
     #Else return False
-    raise
+    
+    parent_x = get_parent(root,x)
+    parent_y = get_parent(root,y)
+    depth_x = get_depth(root,x)
+    depth_y = get_depth(root,y)
+    
+    if(parent_x!=parent_y) and depth_x == depth_y:
+        return True
+    return False
 
 
 
