@@ -80,9 +80,6 @@ def get_depth(root, node):
 
 
 def get_parent(root, node):
-    # Pseudocode
-    # iterate over root to find node
-    # if index of node is even, parent == root[i-3], else parent == root[i-2]
     node_index = root.index(node)
     # add function to check index
     if(node_index == 1) or (node_index == 2):
@@ -94,12 +91,6 @@ def get_parent(root, node):
 
 
 def are_cousins(root, x, y):
-    # Pseudocode
-    # Find parent and depth of x in root
-    # Repeat above step for y in root
-    # Return True if parent_x != parent_y and depth_x == depth_y
-    # Else return False
-
     parent_x = get_parent(root, x)
     parent_y = get_parent(root, y)
     depth_x = get_depth(root, x)
