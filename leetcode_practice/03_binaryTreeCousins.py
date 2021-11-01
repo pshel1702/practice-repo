@@ -22,6 +22,28 @@ class BinaryTreeCousinsAcceptanceTests(unittest.TestCase):
         y = 3
         result = are_cousins(root,x,y)
         self.assertFalse(result)
+    
+    def test_are_cousins_third_level_true(self):
+        root = [1,2,3,4,5,6,7,8,9,10,11,12]
+        x = 8
+        y = 12
+        result = are_cousins(root,x,y)
+        self.assertTrue(result)
+
+    def test_are_cousins_third_level_siblings_false(self):
+        root = [1,2,3,4,5,6,7,8,9,10,11,12]
+        x = 10
+        y = 11
+        result = are_cousins(root,x,y)
+        self.assertFalse(result)
+    
+    def test_are_cousins_parent_child_false(self):
+        root = [1,2,3,4,5,6,7,8,9,10,11,12]
+        x = 5
+        y = 11
+        result = are_cousins(root,x,y)
+        self.assertFalse(result)
+    
 
 class BinaryTreeCousinsUnitTests(unittest.TestCase):
 
@@ -66,6 +88,12 @@ class BinaryTreeCousinsUnitTests(unittest.TestCase):
         node = 4
         result = get_depth(root,node)
         self.assertEqual(result,2)
+    
+    def test_get_depth_node_at_third_level(self):
+        root = [1,2,3,4,5,6,7,8]
+        node = 8
+        result = get_depth(root,node)
+        self.assertEqual(result,3)
 
 def get_depth(root,node):
     node_index = root.index(node)
@@ -73,6 +101,8 @@ def get_depth(root,node):
         return 1
     if node_index == 3:
         return 2
+    if node_index == 7:
+        return 3
     return 0
 
 def get_parent(root,node):
@@ -100,7 +130,7 @@ def are_cousins(root,x,y):
     parent_y = get_parent(root,y)
     depth_x = get_depth(root,x)
     depth_y = get_depth(root,y)
-    
+    #print(f'Parent,depth of {x} is {parent_x},{depth_x} and that of {y} and {parent_y},{depth_y}')
     if(parent_x!=parent_y) and depth_x == depth_y:
         return True
     return False
