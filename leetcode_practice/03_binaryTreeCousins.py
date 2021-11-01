@@ -109,13 +109,23 @@ class BinaryTreeCousinsUnitTests(unittest.TestCase):
         result = get_depth(root,node)
         self.assertEqual(result,3)
 
+    def test_get_depth_middle_node_at_third_level(self):
+        level_0 = [1]
+        level_1 = [2,3]
+        level_2 = [4,5,6,7]
+        level_3 = [8,9,10,11,12,13,14,15]
+        root = [*level_0,*level_1,*level_2,*level_3]
+        node = 12
+        result = get_depth(root,node)
+        self.assertEqual(result,3)
+
 def get_depth(root,node):
     node_index = root.index(node)
     if node_index in (1,2):
         return 1
     if node_index == 3:
         return 2
-    if node_index in (7,14):
+    if node_index in range(7,15):
         return 3
     return 0
 
