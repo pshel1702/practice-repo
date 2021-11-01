@@ -3,14 +3,14 @@ import unittest
 
 class BinaryTreeCousinsAcceptanceTests(unittest.TestCase):
 
-    def test_are_cousins_false(self):
+    def test_are_cousins_false_when_dif_depths(self):
         root = [1, 2, 3, 4]
         x = 4
         y = 3
         result = are_cousins(root, x, y)
         self.assertFalse(result)
 
-    def test_are_cousins_true(self):
+    def test_are_cousins_true_when_dif_parent_same_depth(self):
         root = [1, 2, 3, None, 4, None, 5]
         x = 5
         y = 4
