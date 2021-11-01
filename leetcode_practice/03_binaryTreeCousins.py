@@ -38,6 +38,13 @@ class BinaryTreeCousinsAcceptanceTests(unittest.TestCase):
         result = are_cousins(root, x, y)
         self.assertTrue(result)
 
+    def test_are_cousins_false_when_dif_parent_dif_depth_third_level(self):
+        root = [1, 2, 3, None, 4, None, 5, 6, 7, 8, 9]
+        x = 5
+        y = 7
+        result = are_cousins(root, x, y)
+        self.assertFalse(result)
+
 
 class BinaryTreeCousinsUnitTests(unittest.TestCase):
 
