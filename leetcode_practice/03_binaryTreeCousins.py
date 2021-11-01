@@ -123,7 +123,7 @@ def get_depth(root,node):
     node_index = root.index(node)
     if node_index in (1,2):
         return 1
-    if node_index == 3:
+    if node_index in range(3,7):
         return 2
     if node_index in range(7,15):
         return 3
