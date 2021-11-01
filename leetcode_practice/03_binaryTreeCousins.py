@@ -45,6 +45,13 @@ class BinaryTreeCousinsAcceptanceTests(unittest.TestCase):
         result = are_cousins(root, x, y)
         self.assertFalse(result)
 
+    def test_are_cousins_false_when_child_and_grandchild_of_same_line_third_level(self):
+        root = [1, 2, 3, None, 4, None, 5, 6, 7, 8, 9]
+        x = 5
+        y = 9
+        result = are_cousins(root, x, y)
+        self.assertFalse(result)
+
 
 class BinaryTreeCousinsUnitTests(unittest.TestCase):
 
@@ -90,6 +97,12 @@ class BinaryTreeCousinsUnitTests(unittest.TestCase):
         result = get_depth(root, node)
         self.assertEqual(result, 2)
 
+    def test_get_depth_left_most_node_at_third_level(self):
+        root = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        node = 8
+        result = get_depth(root, node)
+        self.assertEqual(result, 3)
+
 
 def get_depth(root, node):
     node_index = root.index(node)
@@ -97,6 +110,8 @@ def get_depth(root, node):
         return 1
     if node_index == 3:
         return 2
+    if node_index == 7:
+        return 3
     return 0
 
 
