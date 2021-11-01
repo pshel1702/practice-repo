@@ -10,6 +10,13 @@ class BinaryTreeCousinsAcceptanceTests(unittest.TestCase):
         result = are_cousins(root, x, y)
         self.assertFalse(result)
 
+    def test_are_cousins_true(self):
+        root = [1, 2, 3, None, 4, None, 5]
+        x = 5
+        y = 4
+        result = are_cousins(root, x, y)
+        self.assertTrue(result)
+
 
 class BinaryTreeCousinsUnitTests(unittest.TestCase):
 
