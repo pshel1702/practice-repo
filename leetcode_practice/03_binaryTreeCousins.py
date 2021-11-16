@@ -1,5 +1,5 @@
 import unittest
-import math
+from typing import Optional
 
 
 class BinaryTreeCousinsAcceptanceTests(unittest.TestCase):
@@ -146,10 +146,16 @@ class BinaryTreeCousinsUnitTests(unittest.TestCase):
         result = get_depth(root,node)
         self.assertEqual(result,4)
 
+class TreeNode:
+     def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
 
 class Solution:
         
-    def isCousins(self,root,x,y):
+    def isCousins(self, root: Optional[TreeNode], x: int, y: int)-> bool:
         ##Pseudocode
         #Find parent and depth of x in root
         #Repeat above step for y in root
