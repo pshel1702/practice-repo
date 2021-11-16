@@ -1,4 +1,5 @@
 import unittest
+import math
 
 class BinaryTreeCousinsAcceptanceTests(unittest.TestCase):
     
@@ -142,17 +143,31 @@ class BinaryTreeCousinsUnitTests(unittest.TestCase):
         self.assertEqual(result,4)
 
 def get_depth(root,node):
+    #binary tree, every level can have 2^level nodes
+    #First level = index is 0
+    #Second index starts at 1, ends at 2
+    #Left index from level 1: (2^level)-1
+    #Right index from level 1: (2^(level+1)-1)
+
     node_index = root.index(node)
-    if node_index in (1,2):
+
+    if node_index in range(1,3): #(2^1)-1 = 1, 2^(2)-1 = 3
         return 1
-    if node_index in range(3,7):
+    if node_index in range(3,7): #(2^2)-1 = 3, 2^(3)-1 = 7
         return 2
-    if node_index in range(7,15):
+    if node_index in range(7,15): #(2^3)-1 = 7, 2^(4)-1 = 15
         return 3
-    if node_index in range(15,31):
+    if node_index in range(15,31): #(2^4)-1 = 15, 2^(5)-1 = 31
         return 4
+    if node_index in range(31,63): #(2^4)-1 = 15, 2^(5)-1 = 31
+        return 5
+    if node_index in range(63,100): #(2^5)-1 = 15, 2^(7)-127 = 31
+        return 6
     
     return 0
+
+    
+    
 
 def get_parent(root,node):
     #Pseudocode
