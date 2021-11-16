@@ -1,48 +1,52 @@
 import unittest
 import math
 
+
 class BinaryTreeCousinsAcceptanceTests(unittest.TestCase):
+    def __init__(self, *args, **kwargs):
+        super(BinaryTreeCousinsAcceptanceTests, self).__init__(*args, **kwargs)
+        self.sut = Solution()
     
     def test_isCousins_false(self):
         root = [1,2,3,4]
         x = 4
         y = 3
-        result = isCousins(root,x,y)
+        result = self.sut.isCousins(root,x,y)
         self.assertFalse(result)
 
     def test_isCousins_true(self):
         root = [1,2,3,None,4,None,5]
         x = 5
         y = 4
-        result = isCousins(root,x,y)
+        result = self.sut.isCousins(root,x,y)
         self.assertTrue(result)
     
     def test_isCousins_left_node_with_two_children_false(self):
         root = [1,2,3,None,4]
         x = 2
         y = 3
-        result = isCousins(root,x,y)
+        result = self.sut.isCousins(root,x,y)
         self.assertFalse(result)
     
     def test_isCousins_third_level_true(self):
         root = [1,2,3,4,5,6,7,8,9,10,11,12]
         x = 8
         y = 12
-        result = isCousins(root,x,y)
+        result = self.sut.isCousins(root,x,y)
         self.assertTrue(result)
 
     def test_isCousins_third_level_siblings_false(self):
         root = [1,2,3,4,5,6,7,8,9,10,11,12]
         x = 10
         y = 11
-        result = isCousins(root,x,y)
+        result = self.sut.isCousins(root,x,y)
         self.assertFalse(result)
     
     def test_isCousins_parent_child_false(self):
         root = [1,2,3,4,5,6,7,8,9,10,11,12]
         x = 5
         y = 11
-        result = isCousins(root,x,y)
+        result = self.sut.isCousins(root,x,y)
         self.assertFalse(result)
     
 
@@ -142,6 +146,26 @@ class BinaryTreeCousinsUnitTests(unittest.TestCase):
         result = get_depth(root,node)
         self.assertEqual(result,4)
 
+
+class Solution:
+        
+    def isCousins(self,root,x,y):
+        ##Pseudocode
+        #Find parent and depth of x in root
+        #Repeat above step for y in root
+        #Return True if parent_x != parent_y and depth_x == depth_y
+        #Else return False
+        
+        parent_x = get_parent(root,x)
+        parent_y = get_parent(root,y)
+        depth_x = get_depth(root,x)
+        depth_y = get_depth(root,y)
+        #print(f'Parent,depth of {x} is {parent_x},{depth_x} and that of {y} and {parent_y},{depth_y}')
+        if(parent_x!=parent_y) and depth_x == depth_y:
+            return True
+        return False
+
+
 def get_depth(root,node):
     #binary tree, every level can have 2^level nodes
     #First level = index is 0
@@ -181,24 +205,6 @@ def get_parent(root,node):
     if(node_index%2 == 0):
         return root[node_index-3]
     return root[node_index-2]
-
-    
-def isCousins(root,x,y):
-    ##Pseudocode
-    #Find parent and depth of x in root
-    #Repeat above step for y in root
-    #Return True if parent_x != parent_y and depth_x == depth_y
-    #Else return False
-    
-    parent_x = get_parent(root,x)
-    parent_y = get_parent(root,y)
-    depth_x = get_depth(root,x)
-    depth_y = get_depth(root,y)
-    #print(f'Parent,depth of {x} is {parent_x},{depth_x} and that of {y} and {parent_y},{depth_y}')
-    if(parent_x!=parent_y) and depth_x == depth_y:
-        return True
-    return False
-
 
 
 if __name__ == "__main__":
