@@ -3,46 +3,46 @@ import math
 
 class BinaryTreeCousinsAcceptanceTests(unittest.TestCase):
     
-    def test_are_cousins_false(self):
+    def test_isCousins_false(self):
         root = [1,2,3,4]
         x = 4
         y = 3
-        result = are_cousins(root,x,y)
+        result = isCousins(root,x,y)
         self.assertFalse(result)
 
-    def test_are_cousins_true(self):
+    def test_isCousins_true(self):
         root = [1,2,3,None,4,None,5]
         x = 5
         y = 4
-        result = are_cousins(root,x,y)
+        result = isCousins(root,x,y)
         self.assertTrue(result)
     
-    def test_are_cousins_left_node_with_two_children_false(self):
+    def test_isCousins_left_node_with_two_children_false(self):
         root = [1,2,3,None,4]
         x = 2
         y = 3
-        result = are_cousins(root,x,y)
+        result = isCousins(root,x,y)
         self.assertFalse(result)
     
-    def test_are_cousins_third_level_true(self):
+    def test_isCousins_third_level_true(self):
         root = [1,2,3,4,5,6,7,8,9,10,11,12]
         x = 8
         y = 12
-        result = are_cousins(root,x,y)
+        result = isCousins(root,x,y)
         self.assertTrue(result)
 
-    def test_are_cousins_third_level_siblings_false(self):
+    def test_isCousins_third_level_siblings_false(self):
         root = [1,2,3,4,5,6,7,8,9,10,11,12]
         x = 10
         y = 11
-        result = are_cousins(root,x,y)
+        result = isCousins(root,x,y)
         self.assertFalse(result)
     
-    def test_are_cousins_parent_child_false(self):
+    def test_isCousins_parent_child_false(self):
         root = [1,2,3,4,5,6,7,8,9,10,11,12]
         x = 5
         y = 11
-        result = are_cousins(root,x,y)
+        result = isCousins(root,x,y)
         self.assertFalse(result)
     
 
@@ -183,7 +183,7 @@ def get_parent(root,node):
     return root[node_index-2]
 
     
-def are_cousins(root,x,y):
+def isCousins(root,x,y):
     ##Pseudocode
     #Find parent and depth of x in root
     #Repeat above step for y in root
