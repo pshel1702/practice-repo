@@ -11,6 +11,11 @@ class romanToIntegerConversion(unittest.TestCase):
         result = romanToInt(s)
         self.assertEqual(result, expected)
 
+    def test_repeated_roman_symbols(self):
+        s = "III"
+        result = romanToInt(s)
+        self.assertEqual(result, 3)
+
 
 roman_to_integer_dict = {
     'I': 1,
@@ -24,7 +29,10 @@ roman_to_integer_dict = {
 
 
 def romanToInt(s):
-    return roman_to_integer_dict[s]
+    val = 0
+    for symbol in s:
+        val += roman_to_integer_dict[symbol]
+    return val
 
 
 if __name__ == "__main__":
