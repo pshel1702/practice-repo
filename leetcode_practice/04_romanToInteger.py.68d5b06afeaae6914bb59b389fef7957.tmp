@@ -56,6 +56,7 @@ def romanToInt(s):
         if skip_iteration:
             skip_iteration = False
             continue
+        
         curr_symbol_val = roman_to_integer_dict[symbol]
         if to_subtract(index, s, curr_symbol_val):
             val += roman_to_integer_dict[s[index+1]
