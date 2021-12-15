@@ -56,13 +56,14 @@ def romanToInt(s):
         if skip_iteration:
             skip_iteration = False
             continue
-        if index+1 < len(s) and roman_to_integer_dict[symbol] < roman_to_integer_dict[s[index+1]]:
+        curr_symbol_val = roman_to_integer_dict[symbol]
+        if index+1 < len(s) and curr_symbol_val < roman_to_integer_dict[s[index+1]]:
             val += roman_to_integer_dict[s[index+1]
-                                         ] - roman_to_integer_dict[symbol]
+                                         ] - curr_symbol_val
             skip_iteration = True
         else:
             skip_iteration = False
-            val += roman_to_integer_dict[symbol]
+            val += curr_symbol_val
 
     return val
 
