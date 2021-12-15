@@ -1,4 +1,5 @@
 import unittest
+from unittest.case import skip
 
 from ddt import ddt, data, unpack
 
@@ -31,6 +32,11 @@ class romanToIntegerConversion(unittest.TestCase):
         result = romanToInt(s)
         self.assertEqual(result, 58)
 
+    def test_subtraction_multiple_symbols(self):
+        s = "MCMXCIV"
+        result = romanToInt(s)
+        self.assertEqual(result, 1994)
+
 
 roman_to_integer_dict = {
     'I': 1,
@@ -46,15 +52,20 @@ roman_to_integer_dict = {
 def romanToInt(s):
     val = 0
     temp = 0
+    skip_iteration = False
     for index, symbol in enumerate(s):
+        if skip_iteration:
+            skip_iteration = False
+            continue
         if index+1 < len(s) and roman_to_integer_dict[symbol] < roman_to_integer_dict[s[index+1]]:
             temp = roman_to_integer_dict[s[index+1]
                                          ] - roman_to_integer_dict[symbol]
             val += temp
-            break
+            skip_iteration = True
         elif index < len(s):
             temp = roman_to_integer_dict[symbol]
-        val += temp
+            skip_iteration = False
+            val += temp
 
     return val
 
