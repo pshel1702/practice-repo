@@ -16,15 +16,20 @@ class romanToIntegerConversion(unittest.TestCase):
         result = romanToInt(s)
         self.assertEqual(result, 3)
 
-    def test_substraction_scenario(self):
+    def test_subtraction_scenario(self):
         s = "IV"
         result = romanToInt(s)
         self.assertEqual(result, 4)
 
-    def test_substraction_scenario_four_symbols(self):
+    def test_subtraction_scenario_four_symbols(self):
         s = "XXIV"
         result = romanToInt(s)
         self.assertEqual(result, 24)
+
+    def test_subtraction_multiple_symbols(self):
+        s = "LVIII"
+        result = romanToInt(s)
+        self.assertEqual(result, 58)
 
 
 roman_to_integer_dict = {
