@@ -235,16 +235,18 @@ def convert_to_list(root: TreeNode):
     #result = 1,2,3,4,None
     #children  = 7,None,None
     #curr = 6
-    if curr:
-        result.append(curr.val)
-        if curr.left:
-            children.append(curr.left)
-        else:
-            children.append(None)
-        if curr.right:
-            children.append(curr.right)
-        else:
-            children.append(None)
+
+    result.append(curr.val)
+    # method for this repetitive section:
+    # explore recursion
+    if curr.left:
+        children.append(curr.left)
+    else:
+        children.append(None)
+    if curr.right:
+        children.append(curr.right)
+    else:
+        children.append(None)
 
     while len(children) > 0:
         curr = children[0]

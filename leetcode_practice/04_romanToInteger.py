@@ -16,6 +16,16 @@ class romanToIntegerConversion(unittest.TestCase):
         result = romanToInt(s)
         self.assertEqual(result, 3)
 
+    def test_substraction_scenario(self):
+        s = "IV"
+        result = romanToInt(s)
+        self.assertEqual(result, 4)
+
+    def test_substraction_scenario_four_symbols(self):
+        s = "XXIV"
+        result = romanToInt(s)
+        self.assertEqual(result, 24)
+
 
 roman_to_integer_dict = {
     'I': 1,
@@ -30,8 +40,17 @@ roman_to_integer_dict = {
 
 def romanToInt(s):
     val = 0
-    for symbol in s:
-        val += roman_to_integer_dict[symbol]
+    temp = 0
+    for index, symbol in enumerate(s):
+        if index+1 < len(s) and roman_to_integer_dict[symbol] < roman_to_integer_dict[s[index+1]]:
+            temp = roman_to_integer_dict[s[index+1]
+                                         ] - roman_to_integer_dict[symbol]
+            val += temp
+            break
+        elif index < len(s):
+            temp = roman_to_integer_dict[symbol]
+        val += temp
+
     return val
 
 
