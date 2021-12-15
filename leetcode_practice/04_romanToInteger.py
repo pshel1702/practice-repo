@@ -51,21 +51,18 @@ roman_to_integer_dict = {
 
 def romanToInt(s):
     val = 0
-    temp = 0
     skip_iteration = False
     for index, symbol in enumerate(s):
         if skip_iteration:
             skip_iteration = False
             continue
         if index+1 < len(s) and roman_to_integer_dict[symbol] < roman_to_integer_dict[s[index+1]]:
-            temp = roman_to_integer_dict[s[index+1]
+            val += roman_to_integer_dict[s[index+1]
                                          ] - roman_to_integer_dict[symbol]
-            val += temp
             skip_iteration = True
         elif index < len(s):
-            temp = roman_to_integer_dict[symbol]
             skip_iteration = False
-            val += temp
+            val += roman_to_integer_dict[symbol]
 
     return val
 
