@@ -60,7 +60,7 @@ def romanToInt(s):
             val += roman_to_integer_dict[s[index+1]
                                          ] - roman_to_integer_dict[symbol]
             skip_iteration = True
-        elif index < len(s):
+        else:
             skip_iteration = False
             val += roman_to_integer_dict[symbol]
 
