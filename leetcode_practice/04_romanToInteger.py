@@ -51,18 +51,11 @@ roman_to_integer_dict = {
 
 def romanToInt(s):
     val = 0
-    skip_iteration = False
     for index, symbol in enumerate(s):
-        if skip_iteration:
-            skip_iteration = False
-            continue
-
         curr_symbol_val = roman_to_integer_dict[symbol]
         if to_subtract(index, s, curr_symbol_val):
             val -= curr_symbol_val
-            skip_iteration = False
         else:
-            skip_iteration = False
             val += curr_symbol_val
 
     return val
