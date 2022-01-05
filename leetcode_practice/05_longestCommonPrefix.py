@@ -17,15 +17,28 @@ class longestCommonPrefixTests(unittest.TestCase):
         result = longestCommonPrefix(strs)
         self.assertEqual(result, "f")
 
+    def test_multiple_words_with_shortest_word_as_common_prefix(self):
+        strs = ["flow", "flowery", "flower"]
+        result = longestCommonPrefix(strs)
+        self.assertEqual(result, "flow")
+
 
 def longestCommonPrefix(strs):
     if len(strs) == 1:
         return "flower"
-    prefix = strs[0][0]
+    shortest_word = strs[0]
     for _, item in enumerate(strs):
-        if item[0] == prefix:
-            continue
-        return ""
+        if len(item) < len(shortest_word):
+            shortest_word = item
+    shortest_word_length = len(shortest_word)
+    while(shortest_word_length > 0):
+        for _, item in enumerate(strs):
+            if item[0:shortest_word_length] == shortest_word:
+                prefix = shortest_word
+                continue
+            break
+        shortest_word_length -= 1
+        shortest_word = shortest_word[0:-1]
     return prefix
 
 
